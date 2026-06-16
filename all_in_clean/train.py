@@ -404,7 +404,7 @@ def train(
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Train a DQN-family Othello agent.")
 
-    p.add_argument("--board_size",          type=int,   default=5)
+    p.add_argument("--board_size",          type=int,   default=6)
     p.add_argument("--num_episodes",        type=int,   default=5_000)
     p.add_argument("--epsilon_start",       type=float, default=1.0)
     p.add_argument("--epsilon_end",         type=float, default=0.05)
