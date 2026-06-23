@@ -419,6 +419,7 @@ class DQNAgent:
                     "double_dqn": self.double_dqn,
                     "tau": self.tau,
                 },
+                "replay_buffer": self.replay_buffer.get_state(),
             },
             path,
         )
@@ -441,6 +442,9 @@ class DQNAgent:
             self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
 
         self.train_steps = checkpoint.get("train_steps", 0)
+
+        if "replay_buffer" in checkpoint:
+            self.replay_buffer.set_state(checkpoint["replay_buffer"])
 
         self.q_net.eval()
         self.target_net.eval()

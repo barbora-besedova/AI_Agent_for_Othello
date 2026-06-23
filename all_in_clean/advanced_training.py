@@ -19,12 +19,32 @@ import argparse
 import hashlib
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from typing import Optional
 
 import torch
 
 from train_vs_minimax import train
+
+
+class _Tee:
+    """Duplicates writes to both a file handle and stdout."""
+    def __init__(self, path: str):
+        self.file = open(path, "w", encoding="utf-8")
+        self.stdout = sys.stdout
+
+    def write(self, data: str) -> None:
+        self.stdout.write(data)
+        self.file.write(data)
+        self.file.flush()
+
+    def flush(self) -> None:
+        self.stdout.flush()
+        self.file.flush()
+
+    def close(self) -> None:
+        self.file.close()
 
 
 def _resolve_experiment_dir(base_dir: str) -> str:
@@ -100,7 +120,7 @@ def _parse_args() -> argparse.Namespace:
     tg = p.add_argument_group("training overrides")
     tg.add_argument("--load_model_path",     type=str,   default=None)
     tg.add_argument("--board_size",          type=int,   default=6)
-    tg.add_argument("--num_episodes",        type=int,   default=30_000)
+    tg.add_argument("--num_episodes",        type=int,   default=200_000)
     tg.add_argument("--minimax_max_depth",   type=int,   default=5)
     tg.add_argument("--minimax_time_limit",  type=float, default=1.0)
     tg.add_argument("--final_minimax_weight", type=float, default=0.60)
@@ -109,7 +129,7 @@ def _parse_args() -> argparse.Namespace:
     tg.add_argument("--epsilon_start",       type=float, default=0.05)
     tg.add_argument("--epsilon_end",         type=float, default=0.01)
     tg.add_argument("--epsilon_decay",       type=float, default=0.9995)
-    tg.add_argument("--learning_rate",       type=float, default=1e-3)
+    tg.add_argument("--learning_rate",       type=float, default=5e-4)
     tg.add_argument("--gamma",               type=float, default=0.99)
     tg.add_argument("--batch_size",          type=int,   default=128)
     tg.add_argument("--buffer_capacity",     type=int,   default=50_000)
@@ -128,7 +148,7 @@ def _parse_args() -> argparse.Namespace:
     tg.add_argument("--eval_every",          type=int,   default=1000)
     tg.add_argument("--save_every",          type=int,   default=1000)
     tg.add_argument("--print_every",         type=int,   default=50)
-    tg.add_argument("--record_game_eps",     type=str,   default="5000,10000,20000,30000")
+    tg.add_argument("--record_game_eps",     type=str,   default="5000,10000,20000,30000,40000,50000,100000,150000")
     tg.add_argument("--n_record_games",      type=int,   default=3)
     tg.add_argument("--seed",                type=int,   default=42)
     tg.add_argument("--profile",             action="store_true")
@@ -176,6 +196,10 @@ def main() -> None:
 
         model_path = os.path.join(results_dir, "latest.pth")
         best_model_path = os.path.join(exp_dir, "best_model.pth")
+
+        log_path = os.path.join(exp_dir, "training.log")
+        tee = _Tee(log_path)
+        sys.stdout = tee
 
         start_episode = last_ep + 1
         epsilon_start = resume.get("epsilon", args.epsilon_start)
@@ -240,6 +264,9 @@ def main() -> None:
 
         print(f"\nResumed experiment complete: {exp_dir}/")
 
+        sys.stdout = tee.stdout
+        tee.close()
+
     elif args.base_dir:
         exp_dir = _resolve_experiment_dir(args.base_dir)
         print(f"Experiment directory: {exp_dir}/")
@@ -252,6 +279,10 @@ def main() -> None:
 
         model_path = os.path.join(results_dir, "latest.pth")
         best_model_path = os.path.join(exp_dir, "best_model.pth")
+
+        log_path = os.path.join(exp_dir, "training.log")
+        tee = _Tee(log_path)
+        sys.stdout = tee
 
         train_kwargs = dict(
             board_size=args.board_size,
@@ -306,7 +337,10 @@ def main() -> None:
         print(f"\nExperiment complete: {exp_dir}/")
         print(f"  setup.json    -> {setup_path}")
         print(f"  best model    -> {best_model_path}")
-        print(f"  checkpoints   -> {checkpoints_dir}/")
+        print(f"  checkpoints   -> {model_checkpoints_dir}/")
+
+        sys.stdout = tee.stdout
+        tee.close()
 
     else:
         print("Specify --experiment_dir <dir> to resume, "

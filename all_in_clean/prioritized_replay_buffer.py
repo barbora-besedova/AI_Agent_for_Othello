@@ -90,5 +90,19 @@ class PrioritizedReplayBuffer:
     ) -> None:
         self.priorities[indices] = np.abs(td_errors) + self.epsilon
 
+    def get_state(self) -> dict:
+        n = len(self.buffer)
+        return {
+            "buffer": self.buffer,
+            "priorities": self.priorities[:n].copy(),
+            "position": self.position,
+        }
+
+    def set_state(self, state: dict) -> None:
+        self.buffer = state["buffer"]
+        n = len(self.buffer)
+        self.priorities[:n] = state["priorities"]
+        self.position = state["position"]
+
     def __len__(self) -> int:
         return len(self.buffer)

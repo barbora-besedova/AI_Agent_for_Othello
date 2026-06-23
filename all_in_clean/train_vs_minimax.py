@@ -252,8 +252,13 @@ def train(
     )
 
     if load_model_path is not None:
-        agent.load(load_model_path)
-        print(f"Loaded weights from: {load_model_path}")
+        agent.load(load_model_path, load_optimizer=True)
+        # Override to the current learning rate (may differ from checkpoint)
+        for param_group in agent.optimizer.param_groups:
+            param_group["lr"] = learning_rate
+        print(f"Loaded weights + optimizer from: {load_model_path}")
+        print(f"  replay buffer size: {len(agent.replay_buffer)}")
+        print(f"  train steps: {agent.train_steps}")
 
     agent_label = (
         f"{'guided_' if heuristic_weight > 0 else ''}"
