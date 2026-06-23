@@ -79,7 +79,7 @@ def _save_setup(setup: dict, path: str) -> None:
 
 
 def _load_resume_state(exp_dir: str) -> Optional[dict]:
-    path = os.path.join(exp_dir, "resume_state.json")
+    path = os.path.join(exp_dir, "results", "resume_state.json")
     if not os.path.isfile(path):
         return None
     with open(path, "r", encoding="utf-8") as f:
@@ -123,7 +123,7 @@ def _parse_args() -> argparse.Namespace:
     tg.add_argument("--tau",                 type=float, default=0.005)
     tg.add_argument("--double_dqn",          action="store_true", default=True)
     tg.add_argument("--no_double_dqn",       action="store_true")
-    tg.add_argument("--max_minutes",         type=float, default=148)
+    tg.add_argument("--max_minutes",         type=float, default=1000000)
 
     tg.add_argument("--eval_every",          type=int,   default=1000)
     tg.add_argument("--save_every",          type=int,   default=1000)
