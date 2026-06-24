@@ -36,20 +36,20 @@ from typing import Dict, Optional
 
 import numpy as np
 import torch
-
+from agent import DQNAgent
 from environment import OthelloEnv
 from evaluation import evaluate_fair
-from agent import DQNAgent
 
 # ------------------------------------------------------------------ #
 #  Lazy imports for rule-based opponents                              #
 # ------------------------------------------------------------------ #
 
+
 def _import_opponents():
-    from agents.random_agent import RandomAgent
     from agents.greedy_agent import GreedyAgent
     from agents.heuristic_agent import HeuristicAgent
     from agents.minimax_agent import MinimaxAgent
+    from agents.random_agent import RandomAgent
 
     return {
         "random": RandomAgent,
@@ -63,6 +63,8 @@ def _import_opponents():
 #  Helpers                                                            #
 # ------------------------------------------------------------------ #
 
+
+# %% Cell 1
 def set_seed(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
@@ -104,14 +106,14 @@ def _choose_opponent_from_curriculum(
     progress = episode / num_episodes
 
     if progress < 0.30:
-        names =   ["random", "greedy", "heuristic", "minimax", "self-play"]
-        weights = [0.55,     0.30,     0.10,        0.00,       0.05]
+        names = ["random", "greedy", "heuristic", "minimax", "self-play"]
+        weights = [0.55, 0.30, 0.10, 0.00, 0.05]
     elif progress < 0.70:
-        names =   ["random", "greedy", "heuristic", "minimax", "self-play"]
-        weights = [0.15,     0.20,     0.20,        0.20,       0.25]
+        names = ["random", "greedy", "heuristic", "minimax", "self-play"]
+        weights = [0.15, 0.20, 0.20, 0.20, 0.25]
     else:
-        names =   ["random", "greedy", "heuristic", "minimax", "self-play"]
-        weights = [0.05,     0.10,     0.20,        0.30,       0.35]
+        names = ["random", "greedy", "heuristic", "minimax", "self-play"]
+        weights = [0.05, 0.10, 0.20, 0.30, 0.35]
 
     if not include_self_play:
         names = names[:-1]
@@ -133,6 +135,7 @@ def _epsilon_for_opponent(
 #  Main training function                                             #
 # ------------------------------------------------------------------ #
 
+
 def train(
     # --- environment ---
     board_size: int = 5,
@@ -143,7 +146,7 @@ def train(
     epsilon_end: float = 0.05,
     epsilon_decay: float = 0.999,
     # --- opponent ---
-    opponent_type: str = "mix",          # "random"|"greedy"|"heuristic"|"minimax"|"mix"|"self-play"
+    opponent_type: str = "mix",  # "random"|"greedy"|"heuristic"|"minimax"|"mix"|"self-play"
     # --- agent hyper-parameters ---
     learning_rate: float = 1e-3,
     gamma: float = 0.99,
@@ -152,8 +155,8 @@ def train(
     target_update_freq: int = 500,
     learning_starts: int = 1_000,
     double_dqn: bool = True,
-    heuristic_weight: float = 0.0,       # >0 → guided/HDQN mode
-    use_per: bool = False,               # True → PER/PDQN mode
+    heuristic_weight: float = 0.0,  # >0 → guided/HDQN mode
+    use_per: bool = False,  # True → PER/PDQN mode
     per_alpha: float = 0.6,
     per_beta_start: float = 0.4,
     per_beta_frames: int = 100_000,
@@ -215,7 +218,9 @@ def train(
         f"{'per_' if use_per else ''}"
         f"dqn | hw={heuristic_weight} | per={use_per}"
     )
-    print(f"Training: {agent_label} | opponent={opponent_type} | episodes={num_episodes}")
+    print(
+        f"Training: {agent_label} | opponent={opponent_type} | episodes={num_episodes}"
+    )
 
     # ---- histories ----
     epsilon = epsilon_start
@@ -283,7 +288,9 @@ def train(
                 break
 
             # Opponent responds
-            obs_after_opp, _, done, info = env.step(opponent.select_action(obs_after_agent))
+            obs_after_opp, _, done, info = env.step(
+                opponent.select_action(obs_after_agent)
+            )
 
             if done:
                 reward = compute_final_reward(info["winner"], agent_player)
@@ -401,38 +408,53 @@ def train(
 #  CLI entry-point                                                    #
 # ------------------------------------------------------------------ #
 
+
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Train a DQN-family Othello agent.")
 
-    p.add_argument("--board_size",          type=int,   default=6)
-    p.add_argument("--num_episodes",        type=int,   default=5_000)
-    p.add_argument("--epsilon_start",       type=float, default=1.0)
-    p.add_argument("--epsilon_end",         type=float, default=0.05)
-    p.add_argument("--epsilon_decay",       type=float, default=0.999)
-    p.add_argument("--opponent_type",       type=str,   default="mix",
-                   choices=["random", "greedy", "heuristic", "minimax", "mix", "self-play"])
-    p.add_argument("--learning_rate",       type=float, default=1e-3)
-    p.add_argument("--gamma",               type=float, default=0.99)
-    p.add_argument("--batch_size",          type=int,   default=64)
-    p.add_argument("--buffer_capacity",     type=int,   default=50_000)
-    p.add_argument("--target_update_freq",  type=int,   default=500)
-    p.add_argument("--learning_starts",     type=int,   default=1_000)
-    p.add_argument("--heuristic_weight",    type=float, default=0.0,
-                   help="Heuristic bonus weight. 0 = classic DQN, >0 = guided (HDQN).")
-    p.add_argument("--use_per",             action="store_true",
-                   help="Use Prioritized Experience Replay (PDQN).")
-    p.add_argument("--per_alpha",           type=float, default=0.6)
-    p.add_argument("--per_beta_start",      type=float, default=0.4)
-    p.add_argument("--per_beta_frames",     type=int,   default=100_000)
-    p.add_argument("--model_path",          type=str,   default="models/othello_agent.pth")
-    p.add_argument("--load_model_path",     type=str,   default=None)
+    p.add_argument("--board_size", type=int, default=6)
+    p.add_argument("--num_episodes", type=int, default=5_000)
+    p.add_argument("--epsilon_start", type=float, default=1.0)
+    p.add_argument("--epsilon_end", type=float, default=0.05)
+    p.add_argument("--epsilon_decay", type=float, default=0.999)
+    p.add_argument(
+        "--opponent_type",
+        type=str,
+        default="mix",
+        choices=["random", "greedy", "heuristic", "minimax", "mix", "self-play"],
+    )
+    p.add_argument("--learning_rate", type=float, default=1e-3)
+    p.add_argument("--gamma", type=float, default=0.99)
+    p.add_argument("--batch_size", type=int, default=64)
+    p.add_argument("--buffer_capacity", type=int, default=50_000)
+    p.add_argument("--target_update_freq", type=int, default=500)
+    p.add_argument("--learning_starts", type=int, default=1_000)
+    p.add_argument(
+        "--heuristic_weight",
+        type=float,
+        default=0.0,
+        help="Heuristic bonus weight. 0 = classic DQN, >0 = guided (HDQN).",
+    )
+    p.add_argument(
+        "--use_per",
+        action="store_true",
+        help="Use Prioritized Experience Replay (PDQN).",
+    )
+    p.add_argument("--per_alpha", type=float, default=0.6)
+    p.add_argument("--per_beta_start", type=float, default=0.4)
+    p.add_argument("--per_beta_frames", type=int, default=100_000)
+    p.add_argument("--model_path", type=str, default="models/othello_agent.pth")
+    p.add_argument("--load_model_path", type=str, default=None)
     p.add_argument("--self_play_update_freq", type=int, default=500)
-    p.add_argument("--print_every",         type=int,   default=100)
-    p.add_argument("--eval_every",          type=int,   default=250)
-    p.add_argument("--save_every",          type=int,   default=500)
-    p.add_argument("--seed",                type=int,   default=42)
-    p.add_argument("--no_double_dqn",       action="store_true",
-                   help="Disable Double DQN (not recommended).")
+    p.add_argument("--print_every", type=int, default=100)
+    p.add_argument("--eval_every", type=int, default=250)
+    p.add_argument("--save_every", type=int, default=500)
+    p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--no_double_dqn",
+        action="store_true",
+        help="Disable Double DQN (not recommended).",
+    )
 
     return p.parse_args()
 

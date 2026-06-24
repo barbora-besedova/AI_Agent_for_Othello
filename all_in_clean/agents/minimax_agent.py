@@ -8,10 +8,10 @@ import random
 class MinimaxAgent:
     """
     Minimax with alpha-beta pruning and a simple heuristic evaluation.
-    Depth 3 is fast enough for 5×5.
+    Depth 4 is fast enough for 5×5.
     """
 
-    def __init__(self, board_size: int = 5, depth: int = 3):
+    def __init__(self, board_size: int = 5, depth: int = 4):
         self.board_size = board_size
         self.depth = depth
         self.pass_action = board_size * board_size

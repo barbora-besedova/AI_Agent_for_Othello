@@ -1,0 +1,94 @@
+# ── Global Configuration ───────────────────────────────────────────
+BOARD_SIZE    = 6
+SEED          = 42
+MODELS_DIR    = "models"
+os.makedirs(MODELS_DIR, exist_ok=True)
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+set_seed(SEED)
+
+# ── Training Hyperparameters (shared) ───────────────────────────
+TRAIN_CFG = dict(
+    board_size         = BOARD_SIZE,
+    num_episodes       = 50_000,     # ← episodes per agent
+    epsilon_start      = 1.0,
+    epsilon_end        = 0.05,
+    epsilon_decay      = 0.99999,
+    opponent_type      = "mix",     # curriculum mix including self-play
+    learning_rate      = 1e-3,
+    gamma              = 0.99,
+    batch_size         = 64,
+    buffer_capacity    = 50_000,
+    target_update_freq = 500,
+    learning_starts    = 1_000,
+    self_play_update_freq = 500,    # freeze snapshot every N episodes
+    eval_every         = 200,       # evaluation during training
+    print_every        = 9_999_999,     # suppress text output (we have graphs)
+    save_every         = 1_000,
+    seed               = SEED,
+)
+
+# ── Agent Definitions ─────────────────────────────────────────────
+AGENT_CONFIGS = {
+    # "DQN": dict(
+    #     use_per=False, heuristic_weight=0.0,
+    #     model_path=f"{MODELS_DIR}/dqn.pth",
+    # ),
+    # "Guided DQN": dict(
+    #     use_per=False, heuristic_weight=0.2,
+    #     model_path=f"{MODELS_DIR}/guided_dqn.pth",
+    # ),
+    # "PER DQN": dict(
+    #     use_per=True, heuristic_weight=0.0,
+    #     per_alpha=0.6, per_beta_start=0.4, per_beta_frames=100_000,
+    #     model_path=f"{MODELS_DIR}/per_dqn.pth",
+    # ),
+    "Guided PER": dict(
+        use_per=True, heuristic_weight=0.2,
+        per_alpha=0.6, per_beta_start=0.4, per_beta_frames=100_000,
+        model_path=f"{MODELS_DIR}/guided_per_dqn.pth",
+    ),
+}
+
+print("Configuration:")
+for name, cfg in AGENT_CONFIGS.items():
+    hw  = cfg.get("heuristic_weight", 0.0)
+    per = cfg.get("use_per", False)
+    print(f"  {name:<15} use_per={str(per):<5}  heuristic_weight={hw}")
+
+
+------------------
+
+# ── Helper Functions for Training ───────────────────────────────
+
+def compute_final_reward(winner: int, agent_player: int) -> float:
+    if winner == agent_player: return  1.0
+    if winner == 0:            return  0.0
+    return -1.0
+
+
+def choose_opponent_curriculum(episode: int, num_episodes: int) -> str:
+    """Three-phase curriculum opponent selection."""
+    p = episode / num_episodes
+    if p < 0.30:
+        weights = [0.40, 0.30, 0.10, 0.10, 0.10]
+    else:
+        weights = [0.05, 0.05, 0.1, 0.20, 0.6]
+    return random.choices(names, weights=weights, k=1)[0]
+
+
+def epsilon_floor(base_eps: float, opp_type: str) -> float:
+    floors = {"greedy": 0.15, "heuristic": 0.15, "minimax": 0.20}
+    return max(base_eps, floors.get(opp_type, 0.0))
+
+
+def moving_average(arr, window=100):
+    if len(arr) < window:
+        return np.array(arr)
+    return np.convolve(arr, np.ones(window)/window, mode="valid")

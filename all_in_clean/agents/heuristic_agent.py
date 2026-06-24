@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 
 
@@ -16,6 +18,7 @@ class HeuristicAgent:
 
         best_action = legal_actions[0]
         best_score = -np.inf
+        best_actions = []
 
         for action in legal_actions:
             if action == observation["pass_action"]:
@@ -25,9 +28,11 @@ class HeuristicAgent:
 
             if score > best_score:
                 best_score = score
-                best_action = action
+                best_actions = [action]
+            elif score == best_score:
+                best_actions.append(action)
 
-        return best_action
+        return random.choice(best_actions) if best_actions else best_action
 
     def evaluate_action(self, board, action: int) -> float:
         row = action // self.board_size

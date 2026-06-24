@@ -290,6 +290,23 @@ class OthelloEnv:
 
         return int(player_count - opponent_count)
 
+    def count_corners(self, player: int) -> int:
+        """Number of corners owned by `player`."""
+        n = self.board_size
+        last = n - 1
+        corners = [
+            self.board_abs[0, 0],
+            self.board_abs[0, last],
+            self.board_abs[last, 0],
+            self.board_abs[last, last],
+        ]
+        return int(sum(1 for v in corners if v == player))
+
+    def count_legal_actions(self, player: int) -> int:
+        """Number of legal (non-pass) moves for `player`."""
+        legal = self.get_legal_actions(player)
+        return int(sum(1 for a in legal if a != self.pass_action))
+
     def is_on_board(self, row: int, col: int):
         return 0 <= row < self.board_size and 0 <= col < self.board_size
 
