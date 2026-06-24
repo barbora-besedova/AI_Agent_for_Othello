@@ -1,0 +1,230 @@
+Loaded weights from: /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth
+Training: guided_per_dqn | board=6x6 | opponent=curriculum | episodes=30000 | minimax_time_limit=1.0s | minimax_max_depth=None
+[    1/30000] opp=greedy        eps=0.050 | avg_r=1.000 win%=1.000 | learning not started | W/D/L=1/0/0 | time=0.8s/game
+[   50/30000] opp=greedy        eps=0.049 | avg_r=0.820 win%=0.900 | learning not started | W/D/L=45/1/4 | time=0.0s/game
+[  100/30000] opp=random        eps=0.048 | avg_r=0.800 win%=0.890 | loss=0.0007 q=1.267 gn=0.01 | beta=1.000 | td=0.1099 | W/D/L=89/2/9 | time=0.2s/game
+[  150/30000] opp=greedy        eps=0.046 | avg_r=0.620 win%=0.800 | loss=0.0012 q=1.102 gn=0.01 | beta=1.000 | td=0.1422 | W/D/L=125/3/22 | time=0.4s/game
+[  200/30000] opp=random        eps=0.045 | avg_r=0.540 win%=0.760 | loss=0.0013 q=1.008 gn=0.02 | beta=1.000 | td=0.1202 | W/D/L=165/4/31 | time=0.4s/game
+[  250/30000] opp=greedy        eps=0.044 | avg_r=0.630 win%=0.810 | loss=0.0007 q=1.128 gn=0.01 | beta=1.000 | td=0.0928 | W/D/L=206/4/40 | time=0.3s/game
+[  300/30000] opp=random        eps=0.043 | avg_r=0.550 win%=0.770 | loss=0.0008 q=0.984 gn=0.01 | beta=1.000 | td=0.1194 | W/D/L=242/5/53 | time=0.3s/game
+[  350/30000] opp=random        eps=0.042 | avg_r=0.610 win%=0.800 | loss=0.0008 q=1.132 gn=0.01 | beta=1.000 | td=0.1202 | W/D/L=286/5/59 | time=0.3s/game
+[  400/30000] opp=random        eps=0.041 | avg_r=0.670 win%=0.830 | loss=0.0025 q=1.067 gn=0.07 | beta=1.000 | td=0.1622 | W/D/L=325/6/69 | time=0.3s/game
+[  450/30000] opp=random        eps=0.040 | avg_r=0.520 win%=0.750 | loss=0.0008 q=1.149 gn=0.01 | beta=1.000 | td=0.1112 | W/D/L=361/7/82 | time=0.3s/game
+[  500/30000] opp=greedy        eps=0.039 | avg_r=0.620 win%=0.800 | loss=0.0003 q=1.266 gn=0.01 | beta=1.000 | td=0.1520 | W/D/L=405/8/87 | time=0.3s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.915 win=0.910 W/D/L=91/1/8
+  greedy        score=0.960 win=0.960 W/D/L=96/0/4
+  heuristic     score=0.390 win=0.390 W/D/L=39/0/61
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[  550/30000] opp=heuristic     eps=0.038 | avg_r=0.660 win%=0.820 | loss=0.0009 q=1.047 gn=0.02 | beta=1.000 | td=0.1271 | W/D/L=443/9/98 | time=0.3s/game
+[  600/30000] opp=random        eps=0.037 | avg_r=0.550 win%=0.770 | loss=0.0003 q=0.993 gn=0.01 | beta=1.000 | td=0.1347 | W/D/L=482/9/109 | time=0.4s/game
+[  650/30000] opp=greedy        eps=0.036 | avg_r=0.620 win%=0.810 | loss=0.0021 q=1.220 gn=0.07 | beta=1.000 | td=0.1534 | W/D/L=524/9/117 | time=0.4s/game
+[  700/30000] opp=greedy        eps=0.035 | avg_r=0.660 win%=0.830 | loss=0.0030 q=1.135 gn=0.03 | beta=1.000 | td=0.1459 | W/D/L=565/9/126 | time=0.4s/game
+[  750/30000] opp=random        eps=0.034 | avg_r=0.610 win%=0.790 | loss=0.0015 q=1.057 gn=0.01 | beta=1.000 | td=0.1672 | W/D/L=603/12/135 | time=0.4s/game
+[  800/30000] opp=greedy        eps=0.034 | avg_r=0.600 win%=0.780 | loss=0.0020 q=0.994 gn=0.02 | beta=1.000 | td=0.1341 | W/D/L=643/13/144 | time=0.4s/game
+[  850/30000] opp=heuristic     eps=0.033 | avg_r=0.620 win%=0.790 | loss=0.0037 q=1.107 gn=0.09 | beta=1.000 | td=0.1311 | W/D/L=682/16/152 | time=0.4s/game
+[  900/30000] opp=random        eps=0.032 | avg_r=0.620 win%=0.790 | loss=0.0040 q=1.038 gn=0.05 | beta=1.000 | td=0.1494 | W/D/L=722/17/161 | time=0.4s/game
+[  950/30000] opp=greedy        eps=0.031 | avg_r=0.500 win%=0.740 | loss=0.0034 q=0.981 gn=0.03 | beta=1.000 | td=0.1872 | W/D/L=756/18/176 | time=0.4s/game
+[ 1000/30000] opp=heuristic     eps=0.030 | avg_r=0.560 win%=0.770 | loss=0.0010 q=0.871 gn=0.01 | beta=1.000 | td=0.1148 | W/D/L=799/19/182 | time=0.4s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.940 win=0.940 W/D/L=94/0/6
+  greedy        score=0.830 win=0.790 W/D/L=79/8/13
+  heuristic     score=0.570 win=0.550 W/D/L=55/4/41
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 1050/30000] opp=heuristic     eps=0.030 | avg_r=0.740 win%=0.850 | loss=0.0018 q=1.022 gn=0.03 | beta=1.000 | td=0.1350 | W/D/L=841/22/187 | time=0.4s/game
+[ 1100/30000] opp=greedy        eps=0.029 | avg_r=0.590 win%=0.780 | loss=0.0022 q=0.970 gn=0.02 | beta=1.000 | td=0.1523 | W/D/L=877/22/201 | time=0.4s/game
+[ 1150/30000] opp=greedy        eps=0.028 | avg_r=0.460 win%=0.730 | loss=0.0018 q=0.985 gn=0.03 | beta=1.000 | td=0.1570 | W/D/L=914/22/214 | time=0.4s/game
+[ 1200/30000] opp=random        eps=0.027 | avg_r=0.540 win%=0.770 | loss=0.0025 q=0.985 gn=0.03 | beta=1.000 | td=0.1569 | W/D/L=954/22/224 | time=0.4s/game
+[ 1250/30000] opp=random        eps=0.027 | avg_r=0.610 win%=0.800 | loss=0.0014 q=0.946 gn=0.02 | beta=1.000 | td=0.1398 | W/D/L=994/23/233 | time=0.4s/game
+[ 1300/30000] opp=heuristic     eps=0.026 | avg_r=0.630 win%=0.790 | loss=0.0003 q=0.911 gn=0.01 | beta=1.000 | td=0.0858 | W/D/L=1033/27/240 | time=0.4s/game
+[ 1350/30000] opp=random        eps=0.025 | avg_r=0.640 win%=0.800 | loss=0.0017 q=0.806 gn=0.02 | beta=1.000 | td=0.1638 | W/D/L=1074/27/249 | time=0.4s/game
+[ 1400/30000] opp=greedy        eps=0.025 | avg_r=0.600 win%=0.790 | loss=0.0094 q=0.961 gn=0.16 | beta=1.000 | td=0.1395 | W/D/L=1112/29/259 | time=0.4s/game
+[ 1450/30000] opp=random        eps=0.024 | avg_r=0.530 win%=0.750 | loss=0.0024 q=0.856 gn=0.02 | beta=1.000 | td=0.1747 | W/D/L=1149/30/271 | time=0.4s/game
+[ 1500/30000] opp=random        eps=0.024 | avg_r=0.550 win%=0.770 | loss=0.0013 q=0.883 gn=0.02 | beta=1.000 | td=0.1535 | W/D/L=1189/30/281 | time=0.4s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.955 win=0.950 W/D/L=95/1/4
+  greedy        score=0.840 win=0.810 W/D/L=81/6/13
+  heuristic     score=0.490 win=0.490 W/D/L=49/0/51
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 1550/30000] opp=random        eps=0.023 | avg_r=0.570 win%=0.780 | loss=0.0017 q=0.764 gn=0.02 | beta=1.000 | td=0.1608 | W/D/L=1227/31/292 | time=0.4s/game
+[ 1600/30000] opp=random        eps=0.022 | avg_r=0.690 win%=0.840 | loss=0.0035 q=0.981 gn=0.02 | beta=1.000 | td=0.2322 | W/D/L=1273/31/296 | time=0.4s/game
+[ 1650/30000] opp=random        eps=0.022 | avg_r=0.730 win%=0.860 | loss=0.0016 q=0.813 gn=0.02 | beta=1.000 | td=0.1505 | W/D/L=1313/32/305 | time=0.4s/game
+[ 1700/30000] opp=heuristic     eps=0.021 | avg_r=0.490 win%=0.730 | loss=0.0012 q=0.863 gn=0.01 | beta=1.000 | td=0.1335 | W/D/L=1346/34/320 | time=0.4s/game
+[ 1750/30000] opp=random        eps=0.021 | avg_r=0.640 win%=0.810 | loss=0.0018 q=0.912 gn=0.01 | beta=1.000 | td=0.1473 | W/D/L=1394/34/322 | time=0.4s/game
+[ 1800/30000] opp=random        eps=0.020 | avg_r=0.830 win%=0.910 | loss=0.0005 q=0.914 gn=0.01 | beta=1.000 | td=0.1264 | W/D/L=1437/35/328 | time=0.4s/game
+[ 1850/30000] opp=random        eps=0.020 | avg_r=0.570 win%=0.780 | loss=0.0007 q=0.928 gn=0.01 | beta=1.000 | td=0.1271 | W/D/L=1472/35/343 | time=0.4s/game
+[ 1900/30000] opp=random        eps=0.019 | avg_r=0.500 win%=0.750 | loss=0.0006 q=0.829 gn=0.02 | beta=1.000 | td=0.1547 | W/D/L=1512/35/353 | time=0.4s/game
+[ 1950/30000] opp=random        eps=0.019 | avg_r=0.600 win%=0.800 | loss=0.0014 q=0.802 gn=0.01 | beta=1.000 | td=0.1119 | W/D/L=1552/35/363 | time=0.4s/game
+[ 2000/30000] opp=greedy        eps=0.018 | avg_r=0.590 win%=0.790 | loss=0.0012 q=0.810 gn=0.04 | beta=1.000 | td=0.1132 | W/D/L=1591/36/373 | time=0.4s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.935 win=0.930 W/D/L=93/1/6
+  greedy        score=0.790 win=0.790 W/D/L=79/0/21
+  heuristic     score=0.535 win=0.490 W/D/L=49/9/42
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 2050/30000] opp=greedy        eps=0.018 | avg_r=0.620 win%=0.800 | loss=0.0004 q=0.852 gn=0.00 | beta=1.000 | td=0.1245 | W/D/L=1632/37/381 | time=0.4s/game
+[ 2100/30000] opp=random        eps=0.017 | avg_r=0.650 win%=0.820 | loss=0.0008 q=0.833 gn=0.01 | beta=1.000 | td=0.1108 | W/D/L=1673/37/390 | time=0.4s/game
+[ 2150/30000] opp=random        eps=0.017 | avg_r=0.690 win%=0.840 | loss=0.0007 q=0.796 gn=0.01 | beta=1.000 | td=0.1288 | W/D/L=1716/38/396 | time=0.3s/game
+[ 2200/30000] opp=heuristic     eps=0.017 | avg_r=0.700 win%=0.840 | loss=0.0026 q=0.760 gn=0.05 | beta=1.000 | td=0.2306 | W/D/L=1757/39/404 | time=0.3s/game
+[ 2250/30000] opp=random        eps=0.016 | avg_r=0.550 win%=0.770 | loss=0.0018 q=0.992 gn=0.02 | beta=1.000 | td=0.1728 | W/D/L=1793/39/418 | time=0.3s/game
+[ 2300/30000] opp=heuristic     eps=0.016 | avg_r=0.490 win%=0.740 | loss=0.0033 q=1.004 gn=0.02 | beta=1.000 | td=0.2818 | W/D/L=1831/40/429 | time=0.3s/game
+[ 2350/30000] opp=random        eps=0.015 | avg_r=0.520 win%=0.740 | loss=0.0054 q=0.833 gn=0.03 | beta=1.000 | td=0.2821 | W/D/L=1867/43/440 | time=0.3s/game
+[ 2400/30000] opp=random        eps=0.015 | avg_r=0.510 win%=0.730 | loss=0.0011 q=0.835 gn=0.02 | beta=1.000 | td=0.1482 | W/D/L=1904/45/451 | time=0.3s/game
+[ 2450/30000] opp=random        eps=0.015 | avg_r=0.680 win%=0.830 | loss=0.0020 q=0.644 gn=0.02 | beta=1.000 | td=0.1553 | W/D/L=1950/45/455 | time=0.3s/game
+[ 2500/30000] opp=greedy        eps=0.014 | avg_r=0.700 win%=0.850 | loss=0.0008 q=0.705 gn=0.01 | beta=1.000 | td=0.1490 | W/D/L=1989/45/466 | time=0.3s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.925 win=0.910 W/D/L=91/3/6
+  greedy        score=0.810 win=0.810 W/D/L=81/0/19
+  heuristic     score=0.530 win=0.530 W/D/L=53/0/47
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 2550/30000] opp=random        eps=0.014 | avg_r=0.590 win%=0.790 | loss=0.0017 q=0.867 gn=0.02 | beta=1.000 | td=0.1291 | W/D/L=2029/46/475 | time=0.4s/game
+[ 2600/30000] opp=random        eps=0.014 | avg_r=0.680 win%=0.830 | loss=0.0010 q=0.717 gn=0.02 | beta=1.000 | td=0.1365 | W/D/L=2072/47/481 | time=0.6s/game
+[ 2650/30000] opp=random        eps=0.013 | avg_r=0.630 win%=0.810 | loss=0.0030 q=0.722 gn=0.03 | beta=1.000 | td=0.1893 | W/D/L=2110/47/493 | time=0.6s/game
+[ 2700/30000] opp=random        eps=0.013 | avg_r=0.660 win%=0.830 | loss=0.0011 q=0.630 gn=0.01 | beta=1.000 | td=0.1705 | W/D/L=2155/47/498 | time=0.6s/game
+[ 2750/30000] opp=random        eps=0.013 | avg_r=0.730 win%=0.860 | loss=0.0014 q=0.775 gn=0.02 | beta=1.000 | td=0.1174 | W/D/L=2196/48/506 | time=0.6s/game
+[ 2800/30000] opp=random        eps=0.012 | avg_r=0.610 win%=0.780 | loss=0.0009 q=0.888 gn=0.01 | beta=1.000 | td=0.0902 | W/D/L=2233/52/515 | time=0.6s/game
+[ 2850/30000] opp=greedy        eps=0.012 | avg_r=0.560 win%=0.760 | loss=0.0015 q=0.722 gn=0.02 | beta=1.000 | td=0.1080 | W/D/L=2272/52/526 | time=0.6s/game
+[ 2900/30000] opp=random        eps=0.012 | avg_r=0.710 win%=0.850 | loss=0.0007 q=0.870 gn=0.01 | beta=1.000 | td=0.1048 | W/D/L=2318/53/529 | time=0.6s/game
+[ 2950/30000] opp=greedy        eps=0.011 | avg_r=0.770 win%=0.880 | loss=0.0011 q=0.807 gn=0.02 | beta=1.000 | td=0.1229 | W/D/L=2360/53/537 | time=0.6s/game
+[ 3000/30000] opp=random        eps=0.011 | avg_r=0.710 win%=0.840 | loss=0.0012 q=0.595 gn=0.01 | beta=1.000 | td=0.1488 | W/D/L=2402/56/542 | time=0.6s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.915 win=0.890 W/D/L=89/5/6
+  greedy        score=0.780 win=0.780 W/D/L=78/0/22
+  heuristic     score=0.390 win=0.390 W/D/L=39/0/61
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 3050/30000] opp=random        eps=0.011 | avg_r=0.740 win%=0.850 | loss=0.0006 q=0.746 gn=0.01 | beta=1.000 | td=0.1174 | W/D/L=2445/57/548 | time=0.6s/game
+[ 3100/30000] opp=greedy        eps=0.011 | avg_r=0.730 win%=0.850 | loss=0.0008 q=0.812 gn=0.01 | beta=1.000 | td=0.1265 | W/D/L=2487/59/554 | time=0.6s/game
+[ 3150/30000] opp=random        eps=0.010 | avg_r=0.610 win%=0.790 | loss=0.0004 q=0.730 gn=0.01 | beta=1.000 | td=0.0876 | W/D/L=2524/60/566 | time=0.6s/game
+[ 3200/30000] opp=random        eps=0.010 | avg_r=0.600 win%=0.790 | loss=0.0009 q=0.756 gn=0.01 | beta=1.000 | td=0.1128 | W/D/L=2566/61/573 | time=0.6s/game
+[ 3250/30000] opp=random        eps=0.010 | avg_r=0.600 win%=0.780 | loss=0.0013 q=0.690 gn=0.02 | beta=1.000 | td=0.1227 | W/D/L=2602/64/584 | time=0.6s/game
+[ 3300/30000] opp=greedy        eps=0.010 | avg_r=0.650 win%=0.800 | loss=0.0007 q=0.733 gn=0.01 | beta=1.000 | td=0.1184 | W/D/L=2646/66/588 | time=0.6s/game
+[ 3350/30000] opp=random        eps=0.010 | avg_r=0.740 win%=0.860 | loss=0.0008 q=0.731 gn=0.01 | beta=1.000 | td=0.1035 | W/D/L=2688/66/596 | time=0.6s/game
+[ 3400/30000] opp=greedy        eps=0.010 | avg_r=0.630 win%=0.810 | loss=0.0013 q=0.816 gn=0.02 | beta=1.000 | td=0.1057 | W/D/L=2727/67/606 | time=0.6s/game
+[ 3450/30000] opp=greedy        eps=0.010 | avg_r=0.510 win%=0.740 | loss=0.0006 q=0.738 gn=0.01 | beta=1.000 | td=0.1239 | W/D/L=2762/69/619 | time=0.6s/game
+[ 3500/30000] opp=greedy        eps=0.010 | avg_r=0.560 win%=0.770 | loss=0.0016 q=0.779 gn=0.03 | beta=1.000 | td=0.1123 | W/D/L=2804/69/627 | time=0.6s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.925 win=0.910 W/D/L=91/3/6
+  greedy        score=0.770 win=0.770 W/D/L=77/0/23
+  heuristic     score=0.710 win=0.710 W/D/L=71/0/29
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 3550/30000] opp=random        eps=0.010 | avg_r=0.740 win%=0.860 | loss=0.0009 q=0.725 gn=0.01 | beta=1.000 | td=0.1222 | W/D/L=2848/71/631 | time=0.6s/game
+[ 3600/30000] opp=random        eps=0.010 | avg_r=0.790 win%=0.880 | loss=0.0007 q=0.757 gn=0.01 | beta=1.000 | td=0.0962 | W/D/L=2892/72/636 | time=0.5s/game
+[ 3650/30000] opp=greedy        eps=0.010 | avg_r=0.710 win%=0.840 | loss=0.0102 q=0.733 gn=0.07 | beta=1.000 | td=0.1435 | W/D/L=2932/74/644 | time=0.5s/game
+[ 3700/30000] opp=greedy        eps=0.010 | avg_r=0.640 win%=0.810 | loss=0.0009 q=0.780 gn=0.01 | beta=1.000 | td=0.1145 | W/D/L=2973/74/653 | time=0.5s/game
+[ 3750/30000] opp=greedy        eps=0.010 | avg_r=0.650 win%=0.820 | loss=0.0016 q=0.869 gn=0.05 | beta=1.000 | td=0.1048 | W/D/L=3014/75/661 | time=0.5s/game
+[ 3800/30000] opp=random        eps=0.010 | avg_r=0.570 win%=0.780 | loss=0.0010 q=0.806 gn=0.01 | beta=1.000 | td=0.1430 | W/D/L=3051/75/674 | time=0.5s/game
+[ 3850/30000] opp=random        eps=0.010 | avg_r=0.590 win%=0.790 | loss=0.0010 q=0.843 gn=0.01 | beta=1.000 | td=0.1200 | W/D/L=3093/76/681 | time=0.5s/game
+[ 3900/30000] opp=greedy        eps=0.010 | avg_r=0.750 win%=0.860 | loss=0.0001 q=0.725 gn=0.00 | beta=1.000 | td=0.0998 | W/D/L=3137/78/685 | time=0.5s/game
+[ 3950/30000] opp=greedy        eps=0.010 | avg_r=0.680 win%=0.820 | loss=0.0008 q=0.743 gn=0.01 | beta=1.000 | td=0.2287 | W/D/L=3175/80/695 | time=0.5s/game
+[ 4000/30000] opp=greedy        eps=0.010 | avg_r=0.580 win%=0.780 | loss=0.0007 q=0.840 gn=0.01 | beta=1.000 | td=0.1020 | W/D/L=3215/80/705 | time=0.5s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.930 win=0.920 W/D/L=92/2/6
+  greedy        score=0.745 win=0.710 W/D/L=71/7/22
+  heuristic     score=0.440 win=0.440 W/D/L=44/0/56
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 4050/30000] opp=greedy        eps=0.010 | avg_r=0.640 win%=0.820 | loss=0.0010 q=0.806 gn=0.02 | beta=1.000 | td=0.1069 | W/D/L=3257/80/713 | time=0.5s/game
+[ 4100/30000] opp=random        eps=0.010 | avg_r=0.590 win%=0.790 | loss=0.0007 q=0.702 gn=0.01 | beta=1.000 | td=0.1547 | W/D/L=3294/81/725 | time=0.5s/game
+[ 4150/30000] opp=random        eps=0.010 | avg_r=0.550 win%=0.760 | loss=0.0013 q=0.767 gn=0.02 | beta=1.000 | td=0.1021 | W/D/L=3333/83/734 | time=0.5s/game
+[ 4200/30000] opp=greedy        eps=0.010 | avg_r=0.630 win%=0.800 | loss=0.0005 q=0.739 gn=0.01 | beta=1.000 | td=0.1063 | W/D/L=3374/84/742 | time=0.5s/game
+[ 4250/30000] opp=greedy        eps=0.010 | avg_r=0.690 win%=0.840 | loss=0.0016 q=0.866 gn=0.02 | beta=1.000 | td=0.0953 | W/D/L=3417/84/749 | time=0.5s/game
+[ 4300/30000] opp=greedy        eps=0.010 | avg_r=0.670 win%=0.830 | loss=0.0009 q=0.710 gn=0.01 | beta=1.000 | td=0.1409 | W/D/L=3457/85/758 | time=0.5s/game
+[ 4350/30000] opp=random        eps=0.010 | avg_r=0.650 win%=0.820 | loss=0.0016 q=0.849 gn=0.02 | beta=1.000 | td=0.1278 | W/D/L=3499/85/766 | time=0.5s/game
+[ 4400/30000] opp=random        eps=0.010 | avg_r=0.640 win%=0.810 | loss=0.0013 q=0.717 gn=0.05 | beta=1.000 | td=0.1277 | W/D/L=3538/87/775 | time=0.5s/game
+[ 4450/30000] opp=greedy        eps=0.010 | avg_r=0.560 win%=0.760 | loss=0.0008 q=0.733 gn=0.02 | beta=1.000 | td=0.1278 | W/D/L=3575/89/786 | time=0.5s/game
+[ 4500/30000] opp=random        eps=0.010 | avg_r=0.590 win%=0.780 | loss=0.0005 q=0.870 gn=0.00 | beta=1.000 | td=0.1316 | W/D/L=3616/90/794 | time=0.5s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.915 win=0.910 W/D/L=91/1/8
+  greedy        score=0.850 win=0.850 W/D/L=85/0/15
+  heuristic     score=0.350 win=0.350 W/D/L=35/0/65
+  fast_minimax  score=0.030 win=0.000 W/D/L=0/3/47
+    as black:  win=0.000 W/D/L=0/4/21
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/4/46
+
+  [saved -> /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/guided_per_dqn_minimax_30000.pth]
+[ 4550/30000] opp=random        eps=0.010 | avg_r=0.610 win%=0.790 | loss=0.0018 q=0.758 gn=0.01 | beta=1.000 | td=0.1636 | W/D/L=3654/92/804 | time=0.5s/game
+[ 4600/30000] opp=random        eps=0.010 | avg_r=0.640 win%=0.800 | loss=0.0017 q=0.803 gn=0.01 | beta=1.000 | td=0.1395 | W/D/L=3696/94/810 | time=0.5s/game
+[ 4650/30000] opp=greedy        eps=0.010 | avg_r=0.610 win%=0.790 | loss=0.0007 q=0.908 gn=0.01 | beta=1.000 | td=0.1295 | W/D/L=3733/95/822 | time=0.5s/game
+[ 4700/30000] opp=random        eps=0.010 | avg_r=0.560 win%=0.770 | loss=0.0002 q=0.863 gn=0.00 | beta=1.000 | td=0.0736 | W/D/L=3773/96/831 | time=0.5s/game
+[ 4750/30000] opp=greedy        eps=0.010 | avg_r=0.580 win%=0.780 | loss=0.0006 q=0.696 gn=0.01 | beta=1.000 | td=0.1017 | W/D/L=3811/97/842 | time=0.5s/game
+[ 4800/30000] opp=heuristic     eps=0.010 | avg_r=0.480 win%=0.730 | loss=0.0013 q=0.751 gn=0.02 | beta=1.000 | td=0.0942 | W/D/L=3846/98/856 | time=0.5s/game
+[ 4850/30000] opp=heuristic     eps=0.010 | avg_r=0.620 win%=0.800 | loss=0.0022 q=0.718 gn=0.02 | beta=1.000 | td=0.2044 | W/D/L=3891/99/860 | time=0.5s/game
+[ 4900/30000] opp=random        eps=0.010 | avg_r=0.770 win%=0.870 | loss=0.0010 q=0.831 gn=0.01 | beta=1.000 | td=0.1778 | W/D/L=3933/101/866 | time=0.5s/game
+[ 4950/30000] opp=random        eps=0.010 | avg_r=0.630 win%=0.800 | loss=0.0009 q=0.808 gn=0.01 | beta=1.000 | td=0.1426 | W/D/L=3971/102/877 | time=0.5s/game
+[ 5000/30000] opp=random        eps=0.010 | avg_r=0.490 win%=0.740 | loss=0.0008 q=0.801 gn=0.01 | beta=1.000 | td=0.1364 | W/D/L=4007/102/891 | time=0.5s/game
+
+-- Evaluation (no exploration) --
+  random        score=0.950 win=0.950 W/D/L=95/0/5
+  greedy        score=0.840 win=0.840 W/D/L=84/0/16
+  heuristic     score=0.540 win=0.530 W/D/L=53/2/45
+  fast_minimax  score=0.000 win=0.000 W/D/L=0/0/50
+    as black:  win=0.000 W/D/L=0/0/25
+    as white:  win=0.000 W/D/L=0/0/25
+    combined: win=0.000 W/D/L=0/0/50
+  Recording 3 games vs minimax to /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/against_minimax_overnight/games/ ...
+Traceback (most recent call last):
+  File "/home/cube/projects/AI_Agent_for_Othello/all_in_clean/train_vs_minimax.py", line 626, in <module>
+    train(
+    ~~~~~^
+        board_size=args.board_size,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<28 lines>...
+        n_record_games=args.n_record_games,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/cube/projects/AI_Agent_for_Othello/all_in_clean/train_vs_minimax.py", line 530, in train
+    transcript2 = record_game(
+        mm, agent, board_size=board_size,
+        record_q=True, device=agent.device)
+  File "/home/cube/projects/AI_Agent_for_Othello/all_in_clean/diagnostics.py", line 91, in record_game
+    action = agent.select_action(obs, epsilon=0.0)
+TypeError: FastMinimaxAgent.select_action() got an unexpected keyword argument 'epsilon'

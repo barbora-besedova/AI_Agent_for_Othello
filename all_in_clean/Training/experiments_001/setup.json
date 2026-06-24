@@ -1,0 +1,52 @@
+{
+  "experiment_dir": "Training/experiments_001",
+  "timestamp": "2026-06-23T11:36:53.366930+00:00",
+  "base_model": {
+    "path": "models/guided_per_dqn_6_best_overnight.pth",
+    "sha256": "64893a58adca22c4",
+    "config": {
+      "heuristic_weight": 0.2,
+      "use_per": true,
+      "per_beta_start": 0.4,
+      "per_beta_frames": 200000,
+      "double_dqn": true
+    },
+    "train_steps": 404674
+  },
+  "training_params": {
+    "board_size": 6,
+    "num_episodes": 30000,
+    "epsilon_start": 0.05,
+    "epsilon_end": 0.01,
+    "epsilon_decay": 0.9995,
+    "minimax_max_depth": 5,
+    "minimax_time_limit": 1.0,
+    "final_minimax_weight": 0.6,
+    "minimax_start_progress": 0.05,
+    "minimax_full_progress": 0.3,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "batch_size": 512,
+    "buffer_capacity": 50000,
+    "target_update_freq": 500,
+    "learning_starts": 1000,
+    "double_dqn": true,
+    "heuristic_weight": 0.2,
+    "use_per": true,
+    "per_alpha": 0.6,
+    "per_beta_start": 0.4,
+    "per_beta_frames": 100000,
+    "tau": 0.005,
+    "load_model_path": "models/guided_per_dqn_6_best_overnight.pth",
+    "checkpoint_dir": "Training/experiments_001/model_checkpoints",
+    "best_model_path": "Training/experiments_001/best_model.pth",
+    "max_minutes": 148,
+    "print_every": 50,
+    "eval_every": 1000,
+    "save_every": 1000,
+    "seed": 42,
+    "profile": false,
+    "record_game_eps": "5000,10000,20000,30000",
+    "n_record_games": 3
+  }
+}

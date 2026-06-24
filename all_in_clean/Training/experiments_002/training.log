@@ -1,0 +1,24 @@
+Resuming experiment: Training/experiments_002/
+  from episode 30000  (next: 30001)
+  epsilon=0.0100
+  loading model: Training/experiments_002/results/latest.pth
+
+Setup updated -> Training/experiments_002/setup.json
+Loaded weights + optimizer from: Training/experiments_002/results/latest.pth
+  replay buffer size: 0
+  train steps: 896205
+Training: guided_per_dqn | board=6x6 | opponent=curriculum | episodes=200000 | minimax_time_limit=1.0s | minimax_max_depth=5
+Resuming from episode 30001 (epsilon=0.0100)
+[30050/200000] opp=fast_minimax  eps=0.010 | avg_r=-0.140 win%=0.420 | learning not started | W/D/L=21/1/28 | time=0.1s/game
+[30100/200000] opp=random        eps=0.010 | avg_r=-0.110 win%=0.440 | loss=0.0010 q=0.854 gn=0.01 | beta=1.000 | td=0.2599 | W/D/L=44/1/55 | time=0.4s/game
+[30150/200000] opp=fast_minimax  eps=0.010 | avg_r=-0.100 win%=0.450 | loss=0.0005 q=0.398 gn=0.01 | beta=1.000 | td=0.1975 | W/D/L=66/1/83 | time=0.5s/game
+[30200/200000] opp=fast_minimax  eps=0.010 | avg_r=-0.090 win%=0.450 | loss=0.0012 q=0.581 gn=0.01 | beta=1.000 | td=0.2431 | W/D/L=89/2/109 | time=0.5s/game
+[30250/200000] opp=greedy        eps=0.010 | avg_r=-0.080 win%=0.450 | loss=0.0033 q=0.490 gn=0.02 | beta=1.000 | td=0.2525 | W/D/L=111/3/136 | time=0.5s/game
+[30300/200000] opp=greedy        eps=0.010 | avg_r=-0.070 win%=0.450 | loss=0.0016 q=0.533 gn=0.05 | beta=1.000 | td=0.2507 | W/D/L=134/5/161 | time=0.6s/game
+[30350/200000] opp=greedy        eps=0.010 | avg_r=-0.050 win%=0.460 | loss=0.0014 q=0.559 gn=0.01 | beta=1.000 | td=0.2522 | W/D/L=157/6/187 | time=0.6s/game
+[30400/200000] opp=fast_minimax  eps=0.010 | avg_r=-0.030 win%=0.470 | loss=0.0014 q=0.551 gn=0.01 | beta=1.000 | td=0.2098 | W/D/L=181/8/211 | time=0.6s/game
+[30450/200000] opp=heuristic     eps=0.010 | avg_r=-0.120 win%=0.430 | loss=0.0013 q=0.580 gn=0.01 | beta=1.000 | td=0.2168 | W/D/L=200/8/242 | time=0.6s/game
+[30500/200000] opp=heuristic     eps=0.010 | avg_r=-0.240 win%=0.380 | loss=0.0018 q=0.502 gn=0.01 | beta=1.000 | td=0.2636 | W/D/L=219/8/273 | time=0.6s/game
+[30550/200000] opp=fast_minimax  eps=0.010 | avg_r=-0.190 win%=0.400 | loss=0.0016 q=0.365 gn=0.01 | beta=1.000 | td=0.2421 | W/D/L=240/9/301 | time=0.6s/game
+[30600/200000] opp=fast_minimax  eps=0.010 | avg_r=0.010 win%=0.500 | loss=0.0017 q=0.339 gn=0.01 | beta=1.000 | td=0.2390 | W/D/L=269/9/322 | time=0.6s/game
+[30650/200000] opp=greedy        eps=0.010 | avg_r=0.180 win%=0.580 | loss=0.0010 q=0.378 gn=0.01 | beta=1.000 | td=0.1719 | W/D/L=298/11/341 | time=0.6s/game

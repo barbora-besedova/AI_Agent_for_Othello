@@ -6,7 +6,7 @@ of the trained Q-network and a hand-crafted positional heuristic.
 
     leaf_score = q_weight * Q_net(position) + (1 - q_weight) * heuristic(position)
 
-    agent = StudentAgent(board_size=5, checkpoint_path="models/best.pth")
+    agent = StudentAgent(board_size=6, checkpoint_path="models/best.pth")
     action = agent.select_action(observation)
 """
 

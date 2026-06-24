@@ -12,7 +12,14 @@ class ReplayBuffer:
     """
 
     def __init__(self, capacity: int = 50_000):
+        self.capacity = capacity
         self.buffer: deque = deque(maxlen=capacity)
+
+    def get_state(self) -> dict:
+        return {"buffer": list(self.buffer)}
+
+    def set_state(self, state: dict) -> None:
+        self.buffer = deque(state["buffer"], maxlen=self.capacity)
 
     def push(
         self,

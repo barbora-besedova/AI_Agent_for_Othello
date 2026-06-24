@@ -3,7 +3,7 @@ student_agent.py — Submission wrapper for the UPV Othello competition.
 
 Satisfies the exact interface required by the assignment:
 
-    agent = StudentAgent(board_size=5, checkpoint_path="models/best.pth")
+    agent = StudentAgent(board_size=6, checkpoint_path="models/best.pth")
     action = agent.select_action(observation)
 
 The class wraps the trained DQNAgent (Guided + PER variant by default)

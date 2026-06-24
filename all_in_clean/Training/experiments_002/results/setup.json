@@ -1,0 +1,58 @@
+{
+  "experiment_dir": "Training/experiments_002/results/",
+  "timestamp": "2026-06-23T15:14:08.147251+00:00",
+  "base_model": {
+    "path": "Training/experiments_002/results/latest.pth",
+    "sha256": "49dca7b8490e68a9",
+    "config": {
+      "heuristic_weight": 0.2,
+      "use_per": true,
+      "per_beta_start": 0.4,
+      "per_beta_frames": 100000,
+      "double_dqn": true,
+      "tau": 0.005
+    },
+    "train_steps": 639786
+  },
+  "training_params": {
+    "board_size": 6,
+    "num_episodes": 30000,
+    "start_episode": 14001,
+    "epsilon_start": 0.01,
+    "epsilon_end": 0.01,
+    "epsilon_decay": 0.9995,
+    "minimax_max_depth": 5,
+    "minimax_time_limit": 1.0,
+    "final_minimax_weight": 0.6,
+    "minimax_start_progress": 0.05,
+    "minimax_full_progress": 0.3,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "batch_size": 128,
+    "buffer_capacity": 50000,
+    "target_update_freq": 500,
+    "learning_starts": 1000,
+    "double_dqn": true,
+    "heuristic_weight": 0.2,
+    "use_per": true,
+    "per_alpha": 0.6,
+    "per_beta_start": 0.4,
+    "per_beta_frames": 100000,
+    "tau": 0.005,
+    "load_model_path": "Training/experiments_002/results/latest.pth",
+    "checkpoint_dir": "Training/experiments_002/results/model_checkpoints",
+    "best_model_path": "Training/experiments_002/results/best_model.pth",
+    "max_minutes": 1000000,
+    "print_every": 50,
+    "eval_every": 1000,
+    "save_every": 1000,
+    "seed": 42,
+    "profile": false,
+    "record_game_eps": "5000,10000,20000,30000",
+    "n_record_games": 3
+  },
+  "resumed_from": {
+    "previous_episode": 14000,
+    "previous_epsilon": 0.01
+  }
+}

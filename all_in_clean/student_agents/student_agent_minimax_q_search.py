@@ -4,7 +4,7 @@ student_agent_q_search.py — Competition submission.
 Minimax tree search where leaf nodes are evaluated by the trained Q-network
 instead of a hand-crafted heuristic (Q-value tree search).
 
-    agent = StudentAgent(board_size=5, checkpoint_path="models/best.pth")
+    agent = StudentAgent(board_size=6, checkpoint_path="models/best.pth")
     action = agent.select_action(observation)
 """
 

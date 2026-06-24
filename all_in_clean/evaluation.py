@@ -1,7 +1,7 @@
 """
 from environments.environment import OthelloEnv
 
-def play_game(agent_1, agent_2, board_size=5):
+def play_game(agent_1, agent_2, board_size=6):
     env = OthelloEnv(board_size=board_size)
     obs = env.reset()
     done = False
@@ -17,7 +17,7 @@ def play_game(agent_1, agent_2, board_size=5):
     return info["winner"], info["disc_diff"]
 
 
-def evaluate_fair(agent_a_class, agent_b_class, board_size=5, n_games=200):
+def evaluate_fair(agent_a_class, agent_b_class, board_size=6, n_games=200):
     a_wins = 0
     b_wins = 0
     draws = 0
@@ -56,10 +56,12 @@ def evaluate_fair(agent_a_class, agent_b_class, board_size=5, n_games=200):
     }
 """
 
+import random
+
 from environment import OthelloEnv
 
 
-def play_game(agent_1, agent_2, board_size=5):
+def play_game(agent_1, agent_2, board_size=6, random_opening_plies=2):
     """
     Plays one complete game.
 
@@ -69,6 +71,18 @@ def play_game(agent_1, agent_2, board_size=5):
     env = OthelloEnv(board_size=board_size)
     observation = env.reset()
     done = False
+
+    # Random opening plies — creates genuine game diversity against deterministic
+    # opponents (Greedy, Heuristic) so that n_games actually generates n distinct
+    # trajectories instead of just 2 (one per color).
+    for _ in range(random_opening_plies):
+        if done:
+            break
+        legal = observation["legal_actions"]
+        pass_action = observation.get("pass_action", board_size * board_size)
+        non_pass = [a for a in legal if a != pass_action]
+        action = random.choice(non_pass if non_pass else legal)
+        observation, _, done, info = env.step(action)
 
     while not done:
         if env.current_player == 1:
@@ -84,8 +98,9 @@ def play_game(agent_1, agent_2, board_size=5):
 def evaluate_fair(
     agent_a,
     agent_b_class,
-    board_size=5,
+    board_size=6,
     n_games=200,
+    random_opening_plies=2,
 ):
     """
     Evaluates an existing instance of agent_a against agent_b_class.
@@ -111,6 +126,7 @@ def evaluate_fair(
             agent_1=agent_a,
             agent_2=agent_b,
             board_size=board_size,
+            random_opening_plies=random_opening_plies,
         )
 
         if winner == 1:
@@ -128,6 +144,7 @@ def evaluate_fair(
             agent_1=agent_b,
             agent_2=agent_a,
             board_size=board_size,
+            random_opening_plies=random_opening_plies,
         )
 
         if winner == -1:

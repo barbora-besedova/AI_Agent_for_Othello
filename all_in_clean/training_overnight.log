@@ -1,0 +1,4 @@
+Loaded weights from: /home/cube/projects/AI_Agent_for_Othello/all_in_clean/models/guided_per_dqn_6_best_overnight.pth
+Training: guided_per_dqn | board=6x6 | opponent=curriculum | episodes=30000 | minimax_time_limit=1.0s | minimax_max_depth=None
+[    1/30000] opp=greedy        eps=0.999 | avg_r=1.000 win%=1.000 | learning not started | W/D/L=1/0/0 | time=0.0s/game
+[   50/30000] opp=greedy        eps=0.951 | avg_r=-0.240 win%=0.360 | learning not started | W/D/L=18/2/30 | time=0.0s/game
